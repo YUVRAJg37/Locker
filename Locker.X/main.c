@@ -16,18 +16,22 @@
 #define RW RC1
 #define EN RC2
 
-unsigned char defaultPassword[] = "9485";
+unsigned char defaultPassword[] = "1234";
 unsigned char currentPassword[] = "0000";
 
 int passwordLength = 0;
+int passwordMaxLength = 0;
 
 void lcd_init();
+void lock_init();
 void lcd_instruction(unsigned char);
 void lcd_data(unsigned char);
 void lcd_string(unsigned char*, unsigned int);
 void keypad();
 _Bool checkPass();
 int getSize(unsigned char*);
+void resetLock();
+void tryAgain();
 
 void main() 
 {
@@ -35,30 +39,31 @@ void main()
     TRISD = 0;
     TRISB = 0xF0;
     
-    lcd_init();
-    lcd_instruction(0x80);
-    lcd_string("ENTER PASSWORD", 14);
-    lcd_instruction(0xC0);
+    lock_init();
 
+    passwordMaxLength = getSize(&defaultPassword);
+    
     while(1)
-    {
+    {          
         if(checkPass())
         {
-            break;
+            lcd_init();
+            lcd_instruction(0x80);
+            lcd_string("   UNLOCKED", 11);
+
+            __delay_ms(10000);
+
+            resetLock();
         }
         else
         {
             keypad();
+            if(passwordLength > passwordMaxLength)
+            {
+                passwordLength = 0;
+                tryAgain();
+            } 
         }
-    }
-    
-    lcd_init();
-    lcd_instruction(0x80);
-    lcd_string("UNLOCKED", 8);
-    
-    while(1)
-    {
-        
     }
     
     return;
@@ -105,7 +110,7 @@ void lcd_string(unsigned char* string, unsigned int size)
 }
 
 void keypad()
-{
+{ 
     C1 = 1; C2 = 0; C3 = 0;
     
     if(R1 == 1)
@@ -197,7 +202,7 @@ void keypad()
         while(R4 == 1);
         currentPassword[passwordLength] = '#';
         passwordLength++;
-    } 
+    }  
 }
 
 int getSize(unsigned char* string)
@@ -210,10 +215,55 @@ int getSize(unsigned char* string)
 
 _Bool checkPass()
 {
-    for(int i=0; defaultPassword[i]!='\0'; i++)
+    if(passwordLength == 0)
+        return 0;
+        
+    for(int i=0; i<passwordMaxLength; i++)
     {
-        if(defaultPassword[i] != currentPassword[i])
+        if(currentPassword[i] != defaultPassword[i])
             return 0;
     }
     return 1;
+}
+
+void resetLock()
+{
+    passwordLength = 0;
+    lock_init();
+    for(int i=0; i<passwordMaxLength; i++)
+    {
+        currentPassword[i] = '0';
+    }  
+}
+
+void lock_init()
+{      
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string("    Welcome", 11);
+    
+    __delay_ms(10000);
+    
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string(" Enter Password", 15);
+   
+    lcd_instruction(0xC0);
+    lcd_string("     ", 5);  
+}
+
+void tryAgain()
+{    
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string("   TRY AGAIN", 12);
+    
+    __delay_ms(10000);
+    
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string(" Enter Password", 15);
+     
+    lcd_instruction(0xC0);
+    lcd_string("     ", 5);   
 }
