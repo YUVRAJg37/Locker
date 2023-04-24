@@ -7,13 +7,7 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\pic.h" 1 3
-
-
-
-
-# 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\htc.h" 1 3
-
+#pragma config WDTE = OFF
 
 
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
@@ -182,7 +176,15 @@ extern __attribute__((nonreentrant)) void _delaywdt(uint32_t);
 
 
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\pic.h" 1 3
-# 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
+
+
+
+
+# 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 5 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\htc.h" 2 3
 # 6 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\pic.h" 2 3
 
@@ -1853,134 +1855,207 @@ extern unsigned char eeprom_read(unsigned char addr);
 extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
-# 1 "main.c" 2
-# 16 "main.c"
-void lcd_data(unsigned char data)
-{
-    PORTD= data;
-    RC0 = 1;
-    RC1 = 0;
-    RC2 = 1;
+# 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
+# 3 "main.c" 2
+# 19 "main.c"
+unsigned char defaultPassword[] = "9485";
+unsigned char currentPassword[] = "0000";
 
-    _delay((unsigned long)((2)*(20000000/4000.0)));
-    RC2 = 0;
+int passwordLength = 0;
+
+void lcd_init();
+void lcd_instruction(unsigned char);
+void lcd_data(unsigned char);
+void lcd_string(unsigned char*, unsigned int);
+void keypad();
+_Bool checkPass();
+int getSize(unsigned char*);
+
+void main()
+{
+    TRISC = 0;
+    TRISD = 0;
+    TRISB = 0xF0;
+
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string("ENTER PASSWORD", 14);
+    lcd_instruction(0xC0);
+
+    while(1)
+    {
+        if(checkPass())
+        {
+            break;
+        }
+        else
+        {
+            keypad();
+        }
+    }
+
+    lcd_init();
+    lcd_instruction(0x80);
+    lcd_string("UNLOCKED", 8);
+
+    while(1)
+    {
+
+    }
+
+    return;
 }
 
-void lcd_command(unsigned char command)
+void lcd_init()
 {
-    PORTD = command;
+    lcd_instruction(0x38);
+    lcd_instruction(0x0C);
+    lcd_instruction(0x06);
+    lcd_instruction(0x01);
+}
+
+void lcd_instruction(unsigned char data)
+{
+    PORTD = data;
     RC0 = 0;
     RC1 = 0;
     RC2 = 1;
 
-    _delay((unsigned long)((5)*(20000000/4000.0)));
+    _delay((unsigned long)((5)*(4000000/4000.0)));
+
     RC2 = 0;
 }
 
-void lcd_string(unsigned char* string, unsigned char length)
+void lcd_data(unsigned char data)
 {
-    unsigned char i;
-    for(i=0; i<length; i++)
+    PORTD = data;
+    RC0 = 1;
+    RC1 = 0;
+    RC2 = 1;
+
+    _delay((unsigned long)((5)*(4000000/4000.0)));
+
+    RC2 = 0;
+}
+
+void lcd_string(unsigned char* string, unsigned int size)
+{
+    for(unsigned int i=0; i<size; i++)
     {
         lcd_data(string[i]);
     }
 }
 
-void lcd_init()
+void keypad()
 {
-    lcd_command(0x38);
-    lcd_command(0x06);
-    lcd_command(0x0C);
-    lcd_command(0x01);
-}
-
-void KeyPad()
-{
-    RB0 = 1; RB1=0; RB2=0;
+    RB0 = 1; RB1 = 0; RB2 = 0;
 
     if(RB4 == 1)
     {
         lcd_data('1');
         while(RB4 == 1);
+        currentPassword[passwordLength] = '1';
+        passwordLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('4');
         while(RB5 == 1);
+        currentPassword[passwordLength] = '4';
+        passwordLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('7');
         while(RB6 == 1);
+        currentPassword[passwordLength] = '7';
+        passwordLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('*');
         while(RB7 == 1);
+        currentPassword[passwordLength] = '*';
+        passwordLength++;
     }
 
-    RB0 = 0; RB1=1; RB2=0;
+    RB0 = 0; RB1 = 1; RB2 = 0;
 
     if(RB4 == 1)
     {
         lcd_data('2');
         while(RB4 == 1);
+        currentPassword[passwordLength] = '2';
+        passwordLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('5');
         while(RB5 == 1);
+        currentPassword[passwordLength] = '5';
+        passwordLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('8');
         while(RB6 == 1);
+        currentPassword[passwordLength] = '8';
+        passwordLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('0');
         while(RB7 == 1);
+        currentPassword[passwordLength] = '0';
+        passwordLength++;
     }
 
-    RB0 = 0; RB1=0; RB2=1;
+    RB0 = 0; RB1 = 0; RB2 = 1;
 
     if(RB4 == 1)
     {
         lcd_data('3');
         while(RB4 == 1);
+        currentPassword[passwordLength] = '3';
+        passwordLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('6');
         while(RB5 == 1);
+        currentPassword[passwordLength] = '6';
+        passwordLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('9');
         while(RB6 == 1);
+        currentPassword[passwordLength] = '9';
+        passwordLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('#');
         while(RB7 == 1);
+        currentPassword[passwordLength] = '#';
+        passwordLength++;
     }
 }
 
-void main()
+int getSize(unsigned char* string)
 {
-    TRISB = 0xF0;
-    TRISC = 0x00;
-    TRISD = 0x00;
+    int i=0;
+    for(i=0; i<string[i]!='\0'; i++);
 
-    lcd_init();
-    lcd_command(0x80);
-    lcd_string("Keypad", 7);
-    lcd_command(0xC0);
+    return i;
+}
 
-    while(1)
+_Bool checkPass()
+{
+    for(int i=0; defaultPassword[i]!='\0'; i++)
     {
-        KeyPad();
+        if(defaultPassword[i] != currentPassword[i])
+            return 0;
     }
-
-    return;
+    return 1;
 }
