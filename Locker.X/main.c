@@ -1,9 +1,10 @@
-#pragma config WDTE = OFF 
+#pragma config WDTE = OFF //Turning off Watchdog Timer
 
 #include <xc.h>
 
-#define _XTAL_FREQ 4000000
+#define _XTAL_FREQ 4000000 
 
+//Defining the alias for PIC ports
 #define C1 RB0
 #define C2 RB1
 #define C3 RB2
@@ -16,32 +17,32 @@
 #define RW RC1
 #define EN RC2
 
-unsigned char defaultPassword[] = "1234";
-unsigned char currentPassword[] = "0000";
+unsigned char defaultPassword[] = "1234"; //Default Password for the Lock
+unsigned char currentPassword[] = "0000"; //Password typed by the user
 
-int passwordLength = 0;
-int passwordMaxLength = 0;
+int passwordCurrentLength = 0; //User typed password length
+int passwordMaxLength = 0; //Length of the default password
 
-void lcd_init();
-void lock_init();
-void lcd_instruction(unsigned char);
-void lcd_data(unsigned char);
-void lcd_string(unsigned char*, unsigned int);
-void keypad();
-_Bool checkPass();
-int getSize(unsigned char*);
-void resetLock();
-void tryAgain();
+void lcd_init(); //Initialize the lcd
+void lock_init(); //Initialize the lock
+void lcd_instruction(unsigned char); //Function to write lcd instruction
+void lcd_data(unsigned char); //Function to write Char data on lcd
+void lcd_string(unsigned char*, unsigned int); //Function to display String of LCD
+void keypad(); //Keeping Track of the keys pressed on keypad
+_Bool checkPass(); //Checking if Typed Password is equal to Deafult Password or not
+int getSize(unsigned char*); //Calculation the size of the string
+void resetLock(); //Reseting the lock
+void tryAgain(); //Reseting the lock when password fails
 
 void main() 
 {
-    TRISC = 0;
-    TRISD = 0;
-    TRISB = 0xF0;
+    TRISC = 0; //Setting Port C to output mode
+    TRISD = 0; //Setting Port D to output mode
+    TRISB = 0xF0; //Setting half Port B values to 0 and half to 1
     
     lock_init();
 
-    passwordMaxLength = getSize(&defaultPassword);
+    passwordMaxLength = getSize(&defaultPassword); //Storing the Default password length
     
     while(1)
     {          
@@ -58,9 +59,9 @@ void main()
         else
         {
             keypad();
-            if(passwordLength > passwordMaxLength)
+            if(passwordCurrentLength > passwordMaxLength)
             {
-                passwordLength = 0;
+                passwordCurrentLength = 0;
                 tryAgain();
             } 
         }
@@ -79,26 +80,26 @@ void lcd_init()
 
 void lcd_instruction(unsigned char data)
 {
-    PORTD = data;
-    RS = 0;
-    RW = 0;
-    EN = 1;
+    PORTD = data; //Setting PORTD value to data
+    RS = 0; //Setting Mode to instruction read
+    RW = 0; //Setting Read Write 0
+    EN = 1; //Setting Enable pin value
     
     __delay_ms(5);
     
-    EN = 0;
+    EN = 0; //Setting Enable value
 }
 
 void lcd_data(unsigned char data)
 {
-    PORTD = data;
-    RS = 1;
-    RW = 0;
-    EN = 1;
+    PORTD = data;//Setting PORTD value to data
+    RS = 1;//Setting Mode to instruction read
+    RW = 0;//Setting Read Write 0
+    EN = 1;//Setting Enable pin value
     
     __delay_ms(5);
     
-    EN = 0;
+    EN = 0;//Setting Enable value
 }
 
 void lcd_string(unsigned char* string, unsigned int size)
@@ -111,97 +112,97 @@ void lcd_string(unsigned char* string, unsigned int size)
 
 void keypad()
 { 
-    C1 = 1; C2 = 0; C3 = 0;
+    C1 = 1; C2 = 0; C3 = 0; //Setting Column of Keypad values
     
     if(R1 == 1)
     {
         lcd_data('1');
         while(R1 == 1);
-        currentPassword[passwordLength] = '1';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '1';
+        passwordCurrentLength++;
     }
     if(R2 == 1)
     {
         lcd_data('4');
         while(R2 == 1);
-        currentPassword[passwordLength] = '4';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '4';
+        passwordCurrentLength++;
     }
     if(R3 == 1)
     {
         lcd_data('7');
         while(R3 == 1);
-        currentPassword[passwordLength] = '7';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '7';
+        passwordCurrentLength++;
     }
     if(R4 == 1)
     {
         lcd_data('*');
         while(R4 == 1);
-        currentPassword[passwordLength] = '*';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '*';
+        passwordCurrentLength++;
     }
     
-    C1 = 0; C2 = 1; C3 = 0;
+    C1 = 0; C2 = 1; C3 = 0; //Setting Column of Keypad values
     
     if(R1 == 1)
     {
         lcd_data('2');
         while(R1 == 1);
-        currentPassword[passwordLength] = '2';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '2';
+        passwordCurrentLength++;
     }
     if(R2 == 1)
     {
         lcd_data('5');
         while(R2 == 1);
-        currentPassword[passwordLength] = '5';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '5';
+        passwordCurrentLength++;
     }
     if(R3 == 1)
     {
         lcd_data('8');
         while(R3 == 1);
-        currentPassword[passwordLength] = '8';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '8';
+        passwordCurrentLength++;
     }
     if(R4 == 1)
     {
         lcd_data('0');
         while(R4 == 1);
-        currentPassword[passwordLength] = '0';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '0';
+        passwordCurrentLength++;
     }
     
-    C1 = 0; C2 = 0; C3 = 1;
+    C1 = 0; C2 = 0; C3 = 1; //Setting Column of Keypad values
     
     if(R1 == 1)
     {
         lcd_data('3');
         while(R1 == 1);
-        currentPassword[passwordLength] = '3';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '3';
+        passwordCurrentLength++;
     }
     if(R2 == 1)
     {
         lcd_data('6');
         while(R2 == 1);
-        currentPassword[passwordLength] = '6';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '6';
+        passwordCurrentLength++;
     }
     if(R3 == 1)
     {
         lcd_data('9');
         while(R3 == 1);
-        currentPassword[passwordLength] = '9';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '9';
+        passwordCurrentLength++;
     }
     if(R4 == 1)
     {
         lcd_data('#');
         while(R4 == 1);
-        currentPassword[passwordLength] = '#';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '#';
+        passwordCurrentLength++;
     }  
 }
 
@@ -215,7 +216,7 @@ int getSize(unsigned char* string)
 
 _Bool checkPass()
 {
-    if(passwordLength == 0)
+    if(passwordCurrentLength == 0)
         return 0;
         
     for(int i=0; i<passwordMaxLength; i++)
@@ -228,7 +229,7 @@ _Bool checkPass()
 
 void resetLock()
 {
-    passwordLength = 0;
+    passwordCurrentLength = 0;
     lock_init();
     for(int i=0; i<passwordMaxLength; i++)
     {

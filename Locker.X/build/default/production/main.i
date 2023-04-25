@@ -1857,11 +1857,11 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
 # 3 "main.c" 2
-# 19 "main.c"
+# 20 "main.c"
 unsigned char defaultPassword[] = "1234";
 unsigned char currentPassword[] = "0000";
 
-int passwordLength = 0;
+int passwordCurrentLength = 0;
 int passwordMaxLength = 0;
 
 void lcd_init();
@@ -1900,9 +1900,9 @@ void main()
         else
         {
             keypad();
-            if(passwordLength > passwordMaxLength)
+            if(passwordCurrentLength > passwordMaxLength)
             {
-                passwordLength = 0;
+                passwordCurrentLength = 0;
                 tryAgain();
             }
         }
@@ -1959,29 +1959,29 @@ void keypad()
     {
         lcd_data('1');
         while(RB4 == 1);
-        currentPassword[passwordLength] = '1';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '1';
+        passwordCurrentLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('4');
         while(RB5 == 1);
-        currentPassword[passwordLength] = '4';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '4';
+        passwordCurrentLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('7');
         while(RB6 == 1);
-        currentPassword[passwordLength] = '7';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '7';
+        passwordCurrentLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('*');
         while(RB7 == 1);
-        currentPassword[passwordLength] = '*';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '*';
+        passwordCurrentLength++;
     }
 
     RB0 = 0; RB1 = 1; RB2 = 0;
@@ -1990,29 +1990,29 @@ void keypad()
     {
         lcd_data('2');
         while(RB4 == 1);
-        currentPassword[passwordLength] = '2';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '2';
+        passwordCurrentLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('5');
         while(RB5 == 1);
-        currentPassword[passwordLength] = '5';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '5';
+        passwordCurrentLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('8');
         while(RB6 == 1);
-        currentPassword[passwordLength] = '8';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '8';
+        passwordCurrentLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('0');
         while(RB7 == 1);
-        currentPassword[passwordLength] = '0';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '0';
+        passwordCurrentLength++;
     }
 
     RB0 = 0; RB1 = 0; RB2 = 1;
@@ -2021,29 +2021,29 @@ void keypad()
     {
         lcd_data('3');
         while(RB4 == 1);
-        currentPassword[passwordLength] = '3';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '3';
+        passwordCurrentLength++;
     }
     if(RB5 == 1)
     {
         lcd_data('6');
         while(RB5 == 1);
-        currentPassword[passwordLength] = '6';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '6';
+        passwordCurrentLength++;
     }
     if(RB6 == 1)
     {
         lcd_data('9');
         while(RB6 == 1);
-        currentPassword[passwordLength] = '9';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '9';
+        passwordCurrentLength++;
     }
     if(RB7 == 1)
     {
         lcd_data('#');
         while(RB7 == 1);
-        currentPassword[passwordLength] = '#';
-        passwordLength++;
+        currentPassword[passwordCurrentLength] = '#';
+        passwordCurrentLength++;
     }
 }
 
@@ -2057,7 +2057,7 @@ int getSize(unsigned char* string)
 
 _Bool checkPass()
 {
-    if(passwordLength == 0)
+    if(passwordCurrentLength == 0)
         return 0;
 
     for(int i=0; i<passwordMaxLength; i++)
@@ -2070,7 +2070,7 @@ _Bool checkPass()
 
 void resetLock()
 {
-    passwordLength = 0;
+    passwordCurrentLength = 0;
     lock_init();
     for(int i=0; i<passwordMaxLength; i++)
     {

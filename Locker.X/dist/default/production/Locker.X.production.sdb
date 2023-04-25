@@ -11,27 +11,27 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"36 C:\Users\ASUS\Desktop\Electronics\Project\Locker.X\main.c
+"37 C:\Users\ASUS\Desktop\Electronics\Project\Locker.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"72
+"73
 [v _lcd_init lcd_init `(v  1 e 1 0 ]
-"80
+"81
 [v _lcd_instruction lcd_instruction `(v  1 e 1 0 ]
-"92
+"93
 [v _lcd_data lcd_data `(v  1 e 1 0 ]
-"104
+"105
 [v _lcd_string lcd_string `(v  1 e 1 0 ]
-"112
+"113
 [v _keypad keypad `(v  1 e 1 0 ]
-"208
+"209
 [v _getSize getSize `(i  1 e 2 0 ]
-"216
+"217
 [v _checkPass checkPass `(a  1 e 1 0 ]
-"229
+"230
 [v _resetLock resetLock `(v  1 e 1 0 ]
-"239
+"240
 [v _lock_init lock_init `(v  1 e 1 0 ]
-"255
+"256
 [v _tryAgain tryAgain `(v  1 e 1 0 ]
 "341 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
@@ -61,93 +61,93 @@
 [v _RC1 RC1 `VEb  1 e 0 @57 ]
 "2715
 [v _RC2 RC2 `VEb  1 e 0 @58 ]
-"19 C:\Users\ASUS\Desktop\Electronics\Project\Locker.X\main.c
+"20 C:\Users\ASUS\Desktop\Electronics\Project\Locker.X\main.c
 [v _defaultPassword defaultPassword `[5]uc  1 e 5 0 ]
-"20
+"21
 [v _currentPassword currentPassword `[5]uc  1 e 5 0 ]
-"22
-[v _passwordLength passwordLength `i  1 e 2 0 ]
 "23
+[v _passwordCurrentLength passwordCurrentLength `i  1 e 2 0 ]
+"24
 [v _passwordMaxLength passwordMaxLength `i  1 e 2 0 ]
-"36
+"37
 [v _main main `(v  1 e 1 0 ]
 {
-"70
+"71
 } 0
-"255
+"256
 [v _tryAgain tryAgain `(v  1 e 1 0 ]
 {
-"269
+"270
 } 0
-"229
+"230
 [v _resetLock resetLock `(v  1 e 1 0 ]
 {
-"233
+"234
 [v resetLock@i i `i  1 a 2 12 ]
-"237
+"238
 } 0
-"239
+"240
 [v _lock_init lock_init `(v  1 e 1 0 ]
 {
-"253
+"254
 } 0
-"104
+"105
 [v _lcd_string lcd_string `(v  1 e 1 0 ]
 {
 [v lcd_string@string string `*.24uc  1 a 1 wreg ]
-"106
+"107
 [v lcd_string@i i `ui  1 a 2 5 ]
-"104
+"105
 [v lcd_string@string string `*.24uc  1 a 1 wreg ]
 [v lcd_string@size size `ui  1 p 2 3 ]
-"106
+"107
 [v lcd_string@string string `*.24uc  1 a 1 7 ]
-"110
+"111
 } 0
-"72
+"73
 [v _lcd_init lcd_init `(v  1 e 1 0 ]
 {
-"78
+"79
 } 0
-"80
+"81
 [v _lcd_instruction lcd_instruction `(v  1 e 1 0 ]
 {
 [v lcd_instruction@data data `uc  1 a 1 wreg ]
 [v lcd_instruction@data data `uc  1 a 1 wreg ]
-"82
+"83
 [v lcd_instruction@data data `uc  1 a 1 2 ]
-"90
+"91
 } 0
-"112
+"113
 [v _keypad keypad `(v  1 e 1 0 ]
 {
-"206
+"207
 } 0
-"92
+"93
 [v _lcd_data lcd_data `(v  1 e 1 0 ]
 {
 [v lcd_data@data data `uc  1 a 1 wreg ]
 [v lcd_data@data data `uc  1 a 1 wreg ]
-"94
+"95
 [v lcd_data@data data `uc  1 a 1 2 ]
-"102
+"103
 } 0
-"208
+"209
 [v _getSize getSize `(i  1 e 2 0 ]
 {
 [v getSize@string string `*.4uc  1 a 1 wreg ]
-"210
+"211
 [v getSize@i i `i  1 a 2 5 ]
-"208
+"209
 [v getSize@string string `*.4uc  1 a 1 wreg ]
-"210
+"211
 [v getSize@string string `*.4uc  1 a 1 4 ]
-"214
+"215
 } 0
-"216
+"217
 [v _checkPass checkPass `(a  1 e 1 0 ]
 {
-"221
+"222
 [v checkPass@i i `i  1 a 2 1 ]
-"227
+"228
 } 0
