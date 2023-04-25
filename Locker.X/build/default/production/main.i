@@ -1877,9 +1877,11 @@ void tryAgain();
 
 void main()
 {
+    TRISA = 0;
+    TRISB = 0xF0;
     TRISC = 0;
     TRISD = 0;
-    TRISB = 0xF0;
+
 
     lock_init();
 
@@ -1892,9 +1894,10 @@ void main()
             lcd_init();
             lcd_instruction(0x80);
             lcd_string("   UNLOCKED", 11);
-
+            PORTA = 0xFF;
             _delay((unsigned long)((10000)*(4000000/4000.0)));
 
+            PORTA = 0x00;
             resetLock();
         }
         else

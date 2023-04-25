@@ -1,14 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"1438 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
+"1326 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 1326: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1376
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 1376: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"1438
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 1438: extern volatile unsigned char TRISC __attribute__((address(0x087)));
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
 "1500
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 1500: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1376
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 1376: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "27 main.c
 [; ;main.c: 27: void lock_init();
 [v _lock_init `(v ~T0 @X0 0 e? ]
@@ -27,6 +30,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30
 [; ;main.c: 30: void lcd_string(unsigned char*, unsigned int);
 [v _lcd_string `(v ~T0 @X0 0 ef2`*uc`ui ]
+"167 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h: 167: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 [v F36 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\builtins.h
 [v __delay `JF36 ~T0 @X0 0 e ]
@@ -301,584 +307,593 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "39
-[; ;main.c: 39:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 39:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "40
-[; ;main.c: 40:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
-"41
-[; ;main.c: 41:     TRISB = 0xF0;
+[; ;main.c: 40:     TRISB = 0xF0;
 [e = _TRISB -> -> 240 `i `uc ]
-"43
-[; ;main.c: 43:     lock_init();
-[e ( _lock_init ..  ]
+"41
+[; ;main.c: 41:     TRISC = 0;
+[e = _TRISC -> -> 0 `i `uc ]
+"42
+[; ;main.c: 42:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "45
-[; ;main.c: 45:     passwordMaxLength = getSize(&defaultPassword);
-[e = _passwordMaxLength ( _getSize (1 -> &U _defaultPassword `*uc ]
+[; ;main.c: 45:     lock_init();
+[e ( _lock_init ..  ]
 "47
-[; ;main.c: 47:     while(1)
-[e :U 97 ]
-"48
-[; ;main.c: 48:     {
-{
+[; ;main.c: 47:     passwordMaxLength = getSize(&defaultPassword);
+[e = _passwordMaxLength ( _getSize (1 -> &U _defaultPassword `*uc ]
 "49
-[; ;main.c: 49:         if(checkPass())
-[e $ ! != -> ( _checkPass ..  `i -> 0 `i 99  ]
+[; ;main.c: 49:     while(1)
+[e :U 97 ]
 "50
-[; ;main.c: 50:         {
+[; ;main.c: 50:     {
 {
 "51
-[; ;main.c: 51:             lcd_init();
-[e ( _lcd_init ..  ]
+[; ;main.c: 51:         if(checkPass())
+[e $ ! != -> ( _checkPass ..  `i -> 0 `i 99  ]
 "52
-[; ;main.c: 52:             lcd_instruction(0x80);
-[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
+[; ;main.c: 52:         {
+{
 "53
-[; ;main.c: 53:             lcd_string("   UNLOCKED", 11);
-[e ( _lcd_string (2 , :s 1C -> -> 11 `i `ui ]
+[; ;main.c: 53:             lcd_init();
+[e ( _lcd_init ..  ]
+"54
+[; ;main.c: 54:             lcd_instruction(0x80);
+[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
 "55
-[; ;main.c: 55:             _delay((unsigned long)((10000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 55:             lcd_string("   UNLOCKED", 11);
+[e ( _lcd_string (2 , :s 1C -> -> 11 `i `ui ]
+"56
+[; ;main.c: 56:             PORTA = 0xFF;
+[e = _PORTA -> -> 255 `i `uc ]
 "57
-[; ;main.c: 57:             resetLock();
+[; ;main.c: 57:             _delay((unsigned long)((10000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"59
+[; ;main.c: 59:             PORTA = 0x00;
+[e = _PORTA -> -> 0 `i `uc ]
+"60
+[; ;main.c: 60:             resetLock();
 [e ( _resetLock ..  ]
-"58
-[; ;main.c: 58:         }
+"61
+[; ;main.c: 61:         }
 }
 [e $U 100  ]
-"59
-[; ;main.c: 59:         else
-[e :U 99 ]
-"60
-[; ;main.c: 60:         {
-{
-"61
-[; ;main.c: 61:             keypad();
-[e ( _keypad ..  ]
 "62
-[; ;main.c: 62:             if(passwordCurrentLength > passwordMaxLength)
-[e $ ! > _passwordCurrentLength _passwordMaxLength 101  ]
+[; ;main.c: 62:         else
+[e :U 99 ]
 "63
-[; ;main.c: 63:             {
+[; ;main.c: 63:         {
 {
 "64
-[; ;main.c: 64:                 passwordCurrentLength = 0;
-[e = _passwordCurrentLength -> 0 `i ]
+[; ;main.c: 64:             keypad();
+[e ( _keypad ..  ]
 "65
-[; ;main.c: 65:                 tryAgain();
-[e ( _tryAgain ..  ]
+[; ;main.c: 65:             if(passwordCurrentLength > passwordMaxLength)
+[e $ ! > _passwordCurrentLength _passwordMaxLength 101  ]
 "66
-[; ;main.c: 66:             }
+[; ;main.c: 66:             {
+{
+"67
+[; ;main.c: 67:                 passwordCurrentLength = 0;
+[e = _passwordCurrentLength -> 0 `i ]
+"68
+[; ;main.c: 68:                 tryAgain();
+[e ( _tryAgain ..  ]
+"69
+[; ;main.c: 69:             }
 }
 [e :U 101 ]
-"67
-[; ;main.c: 67:         }
+"70
+[; ;main.c: 70:         }
 }
 [e :U 100 ]
-"68
-[; ;main.c: 68:     }
+"71
+[; ;main.c: 71:     }
 }
 [e :U 96 ]
 [e $U 97  ]
 [e :U 98 ]
-"70
-[; ;main.c: 70:     return;
+"73
+[; ;main.c: 73:     return;
 [e $UE 95  ]
-"71
-[; ;main.c: 71: }
+"74
+[; ;main.c: 74: }
 [e :UE 95 ]
 }
-"73
-[; ;main.c: 73: void lcd_init()
+"76
+[; ;main.c: 76: void lcd_init()
 [v _lcd_init `(v ~T0 @X0 1 ef ]
-"74
-[; ;main.c: 74: {
+"77
+[; ;main.c: 77: {
 {
 [e :U _lcd_init ]
 [f ]
-"75
-[; ;main.c: 75:     lcd_instruction(0x38);
-[e ( _lcd_instruction (1 -> -> 56 `i `uc ]
-"76
-[; ;main.c: 76:     lcd_instruction(0x0C);
-[e ( _lcd_instruction (1 -> -> 12 `i `uc ]
-"77
-[; ;main.c: 77:     lcd_instruction(0x06);
-[e ( _lcd_instruction (1 -> -> 6 `i `uc ]
 "78
-[; ;main.c: 78:     lcd_instruction(0x01);
-[e ( _lcd_instruction (1 -> -> 1 `i `uc ]
+[; ;main.c: 78:     lcd_instruction(0x38);
+[e ( _lcd_instruction (1 -> -> 56 `i `uc ]
 "79
-[; ;main.c: 79: }
+[; ;main.c: 79:     lcd_instruction(0x0C);
+[e ( _lcd_instruction (1 -> -> 12 `i `uc ]
+"80
+[; ;main.c: 80:     lcd_instruction(0x06);
+[e ( _lcd_instruction (1 -> -> 6 `i `uc ]
+"81
+[; ;main.c: 81:     lcd_instruction(0x01);
+[e ( _lcd_instruction (1 -> -> 1 `i `uc ]
+"82
+[; ;main.c: 82: }
 [e :UE 102 ]
 }
-"81
-[; ;main.c: 81: void lcd_instruction(unsigned char data)
+"84
+[; ;main.c: 84: void lcd_instruction(unsigned char data)
 [v _lcd_instruction `(v ~T0 @X0 1 ef1`uc ]
-"82
-[; ;main.c: 82: {
+"85
+[; ;main.c: 85: {
 {
 [e :U _lcd_instruction ]
-"81
-[; ;main.c: 81: void lcd_instruction(unsigned char data)
-[v _data `uc ~T0 @X0 1 r1 ]
-"82
-[; ;main.c: 82: {
-[f ]
-"83
-[; ;main.c: 83:     PORTD = data;
-[e = _PORTD _data ]
 "84
-[; ;main.c: 84:     RC0 = 0;
-[e = _RC0 -> -> 0 `i `b ]
+[; ;main.c: 84: void lcd_instruction(unsigned char data)
+[v _data `uc ~T0 @X0 1 r1 ]
 "85
-[; ;main.c: 85:     RC1 = 0;
-[e = _RC1 -> -> 0 `i `b ]
+[; ;main.c: 85: {
+[f ]
 "86
-[; ;main.c: 86:     RC2 = 1;
-[e = _RC2 -> -> 1 `i `b ]
+[; ;main.c: 86:     PORTD = data;
+[e = _PORTD _data ]
+"87
+[; ;main.c: 87:     RC0 = 0;
+[e = _RC0 -> -> 0 `i `b ]
 "88
-[; ;main.c: 88:     _delay((unsigned long)((5)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"90
-[; ;main.c: 90:     RC2 = 0;
-[e = _RC2 -> -> 0 `i `b ]
+[; ;main.c: 88:     RC1 = 0;
+[e = _RC1 -> -> 0 `i `b ]
+"89
+[; ;main.c: 89:     RC2 = 1;
+[e = _RC2 -> -> 1 `i `b ]
 "91
-[; ;main.c: 91: }
+[; ;main.c: 91:     _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"93
+[; ;main.c: 93:     RC2 = 0;
+[e = _RC2 -> -> 0 `i `b ]
+"94
+[; ;main.c: 94: }
 [e :UE 103 ]
 }
-"93
-[; ;main.c: 93: void lcd_data(unsigned char data)
+"96
+[; ;main.c: 96: void lcd_data(unsigned char data)
 [v _lcd_data `(v ~T0 @X0 1 ef1`uc ]
-"94
-[; ;main.c: 94: {
+"97
+[; ;main.c: 97: {
 {
 [e :U _lcd_data ]
-"93
-[; ;main.c: 93: void lcd_data(unsigned char data)
-[v _data `uc ~T0 @X0 1 r1 ]
-"94
-[; ;main.c: 94: {
-[f ]
-"95
-[; ;main.c: 95:     PORTD = data;
-[e = _PORTD _data ]
 "96
-[; ;main.c: 96:     RC0 = 1;
-[e = _RC0 -> -> 1 `i `b ]
+[; ;main.c: 96: void lcd_data(unsigned char data)
+[v _data `uc ~T0 @X0 1 r1 ]
 "97
-[; ;main.c: 97:     RC1 = 0;
-[e = _RC1 -> -> 0 `i `b ]
+[; ;main.c: 97: {
+[f ]
 "98
-[; ;main.c: 98:     RC2 = 1;
-[e = _RC2 -> -> 1 `i `b ]
+[; ;main.c: 98:     PORTD = data;
+[e = _PORTD _data ]
+"99
+[; ;main.c: 99:     RC0 = 1;
+[e = _RC0 -> -> 1 `i `b ]
 "100
-[; ;main.c: 100:     _delay((unsigned long)((5)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"102
-[; ;main.c: 102:     RC2 = 0;
-[e = _RC2 -> -> 0 `i `b ]
+[; ;main.c: 100:     RC1 = 0;
+[e = _RC1 -> -> 0 `i `b ]
+"101
+[; ;main.c: 101:     RC2 = 1;
+[e = _RC2 -> -> 1 `i `b ]
 "103
-[; ;main.c: 103: }
+[; ;main.c: 103:     _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"105
+[; ;main.c: 105:     RC2 = 0;
+[e = _RC2 -> -> 0 `i `b ]
+"106
+[; ;main.c: 106: }
 [e :UE 104 ]
 }
-"105
-[; ;main.c: 105: void lcd_string(unsigned char* string, unsigned int size)
+"108
+[; ;main.c: 108: void lcd_string(unsigned char* string, unsigned int size)
 [v _lcd_string `(v ~T0 @X0 1 ef2`*uc`ui ]
-"106
-[; ;main.c: 106: {
+"109
+[; ;main.c: 109: {
 {
 [e :U _lcd_string ]
-"105
-[; ;main.c: 105: void lcd_string(unsigned char* string, unsigned int size)
+"108
+[; ;main.c: 108: void lcd_string(unsigned char* string, unsigned int size)
 [v _string `*uc ~T0 @X0 1 r1 ]
 [v _size `ui ~T0 @X0 1 r2 ]
-"106
-[; ;main.c: 106: {
+"109
+[; ;main.c: 109: {
 [f ]
-"107
-[; ;main.c: 107:     for(unsigned int i=0; i<size; i++)
+"110
+[; ;main.c: 110:     for(unsigned int i=0; i<size; i++)
 {
 [v _i `ui ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `ui ]
 [e $U 109  ]
 [e :U 106 ]
-"108
-[; ;main.c: 108:     {
+"111
+[; ;main.c: 111:     {
 {
-"109
-[; ;main.c: 109:         lcd_data(string[i]);
+"112
+[; ;main.c: 112:         lcd_data(string[i]);
 [e ( _lcd_data (1 *U + _string * -> _i `ux -> -> # *U _string `ui `ux ]
-"110
-[; ;main.c: 110:     }
+"113
+[; ;main.c: 113:     }
 }
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 109 ]
 [e $ < _i _size 106  ]
 [e :U 107 ]
 }
-"111
-[; ;main.c: 111: }
+"114
+[; ;main.c: 114: }
 [e :UE 105 ]
 }
-"113
-[; ;main.c: 113: void keypad()
+"116
+[; ;main.c: 116: void keypad()
 [v _keypad `(v ~T0 @X0 1 ef ]
-"114
-[; ;main.c: 114: {
+"117
+[; ;main.c: 117: {
 {
 [e :U _keypad ]
 [f ]
-"115
-[; ;main.c: 115:     RB0 = 1; RB1 = 0; RB2 = 0;
+"118
+[; ;main.c: 118:     RB0 = 1; RB1 = 0; RB2 = 0;
 [e = _RB0 -> -> 1 `i `b ]
 [e = _RB1 -> -> 0 `i `b ]
 [e = _RB2 -> -> 0 `i `b ]
-"117
-[; ;main.c: 117:     if(RB4 == 1)
-[e $ ! == -> _RB4 `i -> 1 `i 111  ]
-"118
-[; ;main.c: 118:     {
-{
-"119
-[; ;main.c: 119:         lcd_data('1');
-[e ( _lcd_data (1 -> -> 49 `ui `uc ]
 "120
-[; ;main.c: 120:         while(RB4 == 1);
+[; ;main.c: 120:     if(RB4 == 1)
+[e $ ! == -> _RB4 `i -> 1 `i 111  ]
+"121
+[; ;main.c: 121:     {
+{
+"122
+[; ;main.c: 122:         lcd_data('1');
+[e ( _lcd_data (1 -> -> 49 `ui `uc ]
+"123
+[; ;main.c: 123:         while(RB4 == 1);
 [e $U 112  ]
 [e :U 113 ]
 [e :U 112 ]
 [e $ == -> _RB4 `i -> 1 `i 113  ]
 [e :U 114 ]
-"121
-[; ;main.c: 121:         currentPassword[passwordCurrentLength] = '1';
+"124
+[; ;main.c: 124:         currentPassword[passwordCurrentLength] = '1';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 49 `ui `uc ]
-"122
-[; ;main.c: 122:         passwordCurrentLength++;
+"125
+[; ;main.c: 125:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"123
-[; ;main.c: 123:     }
+"126
+[; ;main.c: 126:     }
 }
 [e :U 111 ]
-"124
-[; ;main.c: 124:     if(RB5 == 1)
-[e $ ! == -> _RB5 `i -> 1 `i 115  ]
-"125
-[; ;main.c: 125:     {
-{
-"126
-[; ;main.c: 126:         lcd_data('4');
-[e ( _lcd_data (1 -> -> 52 `ui `uc ]
 "127
-[; ;main.c: 127:         while(RB5 == 1);
+[; ;main.c: 127:     if(RB5 == 1)
+[e $ ! == -> _RB5 `i -> 1 `i 115  ]
+"128
+[; ;main.c: 128:     {
+{
+"129
+[; ;main.c: 129:         lcd_data('4');
+[e ( _lcd_data (1 -> -> 52 `ui `uc ]
+"130
+[; ;main.c: 130:         while(RB5 == 1);
 [e $U 116  ]
 [e :U 117 ]
 [e :U 116 ]
 [e $ == -> _RB5 `i -> 1 `i 117  ]
 [e :U 118 ]
-"128
-[; ;main.c: 128:         currentPassword[passwordCurrentLength] = '4';
+"131
+[; ;main.c: 131:         currentPassword[passwordCurrentLength] = '4';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 52 `ui `uc ]
-"129
-[; ;main.c: 129:         passwordCurrentLength++;
+"132
+[; ;main.c: 132:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"130
-[; ;main.c: 130:     }
+"133
+[; ;main.c: 133:     }
 }
 [e :U 115 ]
-"131
-[; ;main.c: 131:     if(RB6 == 1)
-[e $ ! == -> _RB6 `i -> 1 `i 119  ]
-"132
-[; ;main.c: 132:     {
-{
-"133
-[; ;main.c: 133:         lcd_data('7');
-[e ( _lcd_data (1 -> -> 55 `ui `uc ]
 "134
-[; ;main.c: 134:         while(RB6 == 1);
+[; ;main.c: 134:     if(RB6 == 1)
+[e $ ! == -> _RB6 `i -> 1 `i 119  ]
+"135
+[; ;main.c: 135:     {
+{
+"136
+[; ;main.c: 136:         lcd_data('7');
+[e ( _lcd_data (1 -> -> 55 `ui `uc ]
+"137
+[; ;main.c: 137:         while(RB6 == 1);
 [e $U 120  ]
 [e :U 121 ]
 [e :U 120 ]
 [e $ == -> _RB6 `i -> 1 `i 121  ]
 [e :U 122 ]
-"135
-[; ;main.c: 135:         currentPassword[passwordCurrentLength] = '7';
+"138
+[; ;main.c: 138:         currentPassword[passwordCurrentLength] = '7';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 55 `ui `uc ]
-"136
-[; ;main.c: 136:         passwordCurrentLength++;
+"139
+[; ;main.c: 139:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"137
-[; ;main.c: 137:     }
+"140
+[; ;main.c: 140:     }
 }
 [e :U 119 ]
-"138
-[; ;main.c: 138:     if(RB7 == 1)
-[e $ ! == -> _RB7 `i -> 1 `i 123  ]
-"139
-[; ;main.c: 139:     {
-{
-"140
-[; ;main.c: 140:         lcd_data('*');
-[e ( _lcd_data (1 -> -> 42 `ui `uc ]
 "141
-[; ;main.c: 141:         while(RB7 == 1);
+[; ;main.c: 141:     if(RB7 == 1)
+[e $ ! == -> _RB7 `i -> 1 `i 123  ]
+"142
+[; ;main.c: 142:     {
+{
+"143
+[; ;main.c: 143:         lcd_data('*');
+[e ( _lcd_data (1 -> -> 42 `ui `uc ]
+"144
+[; ;main.c: 144:         while(RB7 == 1);
 [e $U 124  ]
 [e :U 125 ]
 [e :U 124 ]
 [e $ == -> _RB7 `i -> 1 `i 125  ]
 [e :U 126 ]
-"142
-[; ;main.c: 142:         currentPassword[passwordCurrentLength] = '*';
+"145
+[; ;main.c: 145:         currentPassword[passwordCurrentLength] = '*';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 42 `ui `uc ]
-"143
-[; ;main.c: 143:         passwordCurrentLength++;
+"146
+[; ;main.c: 146:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"144
-[; ;main.c: 144:     }
+"147
+[; ;main.c: 147:     }
 }
 [e :U 123 ]
-"146
-[; ;main.c: 146:     RB0 = 0; RB1 = 1; RB2 = 0;
+"149
+[; ;main.c: 149:     RB0 = 0; RB1 = 1; RB2 = 0;
 [e = _RB0 -> -> 0 `i `b ]
 [e = _RB1 -> -> 1 `i `b ]
 [e = _RB2 -> -> 0 `i `b ]
-"148
-[; ;main.c: 148:     if(RB4 == 1)
-[e $ ! == -> _RB4 `i -> 1 `i 127  ]
-"149
-[; ;main.c: 149:     {
-{
-"150
-[; ;main.c: 150:         lcd_data('2');
-[e ( _lcd_data (1 -> -> 50 `ui `uc ]
 "151
-[; ;main.c: 151:         while(RB4 == 1);
+[; ;main.c: 151:     if(RB4 == 1)
+[e $ ! == -> _RB4 `i -> 1 `i 127  ]
+"152
+[; ;main.c: 152:     {
+{
+"153
+[; ;main.c: 153:         lcd_data('2');
+[e ( _lcd_data (1 -> -> 50 `ui `uc ]
+"154
+[; ;main.c: 154:         while(RB4 == 1);
 [e $U 128  ]
 [e :U 129 ]
 [e :U 128 ]
 [e $ == -> _RB4 `i -> 1 `i 129  ]
 [e :U 130 ]
-"152
-[; ;main.c: 152:         currentPassword[passwordCurrentLength] = '2';
+"155
+[; ;main.c: 155:         currentPassword[passwordCurrentLength] = '2';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 50 `ui `uc ]
-"153
-[; ;main.c: 153:         passwordCurrentLength++;
+"156
+[; ;main.c: 156:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"154
-[; ;main.c: 154:     }
+"157
+[; ;main.c: 157:     }
 }
 [e :U 127 ]
-"155
-[; ;main.c: 155:     if(RB5 == 1)
-[e $ ! == -> _RB5 `i -> 1 `i 131  ]
-"156
-[; ;main.c: 156:     {
-{
-"157
-[; ;main.c: 157:         lcd_data('5');
-[e ( _lcd_data (1 -> -> 53 `ui `uc ]
 "158
-[; ;main.c: 158:         while(RB5 == 1);
+[; ;main.c: 158:     if(RB5 == 1)
+[e $ ! == -> _RB5 `i -> 1 `i 131  ]
+"159
+[; ;main.c: 159:     {
+{
+"160
+[; ;main.c: 160:         lcd_data('5');
+[e ( _lcd_data (1 -> -> 53 `ui `uc ]
+"161
+[; ;main.c: 161:         while(RB5 == 1);
 [e $U 132  ]
 [e :U 133 ]
 [e :U 132 ]
 [e $ == -> _RB5 `i -> 1 `i 133  ]
 [e :U 134 ]
-"159
-[; ;main.c: 159:         currentPassword[passwordCurrentLength] = '5';
+"162
+[; ;main.c: 162:         currentPassword[passwordCurrentLength] = '5';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 53 `ui `uc ]
-"160
-[; ;main.c: 160:         passwordCurrentLength++;
+"163
+[; ;main.c: 163:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"161
-[; ;main.c: 161:     }
+"164
+[; ;main.c: 164:     }
 }
 [e :U 131 ]
-"162
-[; ;main.c: 162:     if(RB6 == 1)
-[e $ ! == -> _RB6 `i -> 1 `i 135  ]
-"163
-[; ;main.c: 163:     {
-{
-"164
-[; ;main.c: 164:         lcd_data('8');
-[e ( _lcd_data (1 -> -> 56 `ui `uc ]
 "165
-[; ;main.c: 165:         while(RB6 == 1);
+[; ;main.c: 165:     if(RB6 == 1)
+[e $ ! == -> _RB6 `i -> 1 `i 135  ]
+"166
+[; ;main.c: 166:     {
+{
+"167
+[; ;main.c: 167:         lcd_data('8');
+[e ( _lcd_data (1 -> -> 56 `ui `uc ]
+"168
+[; ;main.c: 168:         while(RB6 == 1);
 [e $U 136  ]
 [e :U 137 ]
 [e :U 136 ]
 [e $ == -> _RB6 `i -> 1 `i 137  ]
 [e :U 138 ]
-"166
-[; ;main.c: 166:         currentPassword[passwordCurrentLength] = '8';
+"169
+[; ;main.c: 169:         currentPassword[passwordCurrentLength] = '8';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 56 `ui `uc ]
-"167
-[; ;main.c: 167:         passwordCurrentLength++;
+"170
+[; ;main.c: 170:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"168
-[; ;main.c: 168:     }
+"171
+[; ;main.c: 171:     }
 }
 [e :U 135 ]
-"169
-[; ;main.c: 169:     if(RB7 == 1)
-[e $ ! == -> _RB7 `i -> 1 `i 139  ]
-"170
-[; ;main.c: 170:     {
-{
-"171
-[; ;main.c: 171:         lcd_data('0');
-[e ( _lcd_data (1 -> -> 48 `ui `uc ]
 "172
-[; ;main.c: 172:         while(RB7 == 1);
+[; ;main.c: 172:     if(RB7 == 1)
+[e $ ! == -> _RB7 `i -> 1 `i 139  ]
+"173
+[; ;main.c: 173:     {
+{
+"174
+[; ;main.c: 174:         lcd_data('0');
+[e ( _lcd_data (1 -> -> 48 `ui `uc ]
+"175
+[; ;main.c: 175:         while(RB7 == 1);
 [e $U 140  ]
 [e :U 141 ]
 [e :U 140 ]
 [e $ == -> _RB7 `i -> 1 `i 141  ]
 [e :U 142 ]
-"173
-[; ;main.c: 173:         currentPassword[passwordCurrentLength] = '0';
+"176
+[; ;main.c: 176:         currentPassword[passwordCurrentLength] = '0';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 48 `ui `uc ]
-"174
-[; ;main.c: 174:         passwordCurrentLength++;
+"177
+[; ;main.c: 177:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"175
-[; ;main.c: 175:     }
+"178
+[; ;main.c: 178:     }
 }
 [e :U 139 ]
-"177
-[; ;main.c: 177:     RB0 = 0; RB1 = 0; RB2 = 1;
+"180
+[; ;main.c: 180:     RB0 = 0; RB1 = 0; RB2 = 1;
 [e = _RB0 -> -> 0 `i `b ]
 [e = _RB1 -> -> 0 `i `b ]
 [e = _RB2 -> -> 1 `i `b ]
-"179
-[; ;main.c: 179:     if(RB4 == 1)
-[e $ ! == -> _RB4 `i -> 1 `i 143  ]
-"180
-[; ;main.c: 180:     {
-{
-"181
-[; ;main.c: 181:         lcd_data('3');
-[e ( _lcd_data (1 -> -> 51 `ui `uc ]
 "182
-[; ;main.c: 182:         while(RB4 == 1);
+[; ;main.c: 182:     if(RB4 == 1)
+[e $ ! == -> _RB4 `i -> 1 `i 143  ]
+"183
+[; ;main.c: 183:     {
+{
+"184
+[; ;main.c: 184:         lcd_data('3');
+[e ( _lcd_data (1 -> -> 51 `ui `uc ]
+"185
+[; ;main.c: 185:         while(RB4 == 1);
 [e $U 144  ]
 [e :U 145 ]
 [e :U 144 ]
 [e $ == -> _RB4 `i -> 1 `i 145  ]
 [e :U 146 ]
-"183
-[; ;main.c: 183:         currentPassword[passwordCurrentLength] = '3';
+"186
+[; ;main.c: 186:         currentPassword[passwordCurrentLength] = '3';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 51 `ui `uc ]
-"184
-[; ;main.c: 184:         passwordCurrentLength++;
+"187
+[; ;main.c: 187:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"185
-[; ;main.c: 185:     }
+"188
+[; ;main.c: 188:     }
 }
 [e :U 143 ]
-"186
-[; ;main.c: 186:     if(RB5 == 1)
-[e $ ! == -> _RB5 `i -> 1 `i 147  ]
-"187
-[; ;main.c: 187:     {
-{
-"188
-[; ;main.c: 188:         lcd_data('6');
-[e ( _lcd_data (1 -> -> 54 `ui `uc ]
 "189
-[; ;main.c: 189:         while(RB5 == 1);
+[; ;main.c: 189:     if(RB5 == 1)
+[e $ ! == -> _RB5 `i -> 1 `i 147  ]
+"190
+[; ;main.c: 190:     {
+{
+"191
+[; ;main.c: 191:         lcd_data('6');
+[e ( _lcd_data (1 -> -> 54 `ui `uc ]
+"192
+[; ;main.c: 192:         while(RB5 == 1);
 [e $U 148  ]
 [e :U 149 ]
 [e :U 148 ]
 [e $ == -> _RB5 `i -> 1 `i 149  ]
 [e :U 150 ]
-"190
-[; ;main.c: 190:         currentPassword[passwordCurrentLength] = '6';
+"193
+[; ;main.c: 193:         currentPassword[passwordCurrentLength] = '6';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 54 `ui `uc ]
-"191
-[; ;main.c: 191:         passwordCurrentLength++;
+"194
+[; ;main.c: 194:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"192
-[; ;main.c: 192:     }
+"195
+[; ;main.c: 195:     }
 }
 [e :U 147 ]
-"193
-[; ;main.c: 193:     if(RB6 == 1)
-[e $ ! == -> _RB6 `i -> 1 `i 151  ]
-"194
-[; ;main.c: 194:     {
-{
-"195
-[; ;main.c: 195:         lcd_data('9');
-[e ( _lcd_data (1 -> -> 57 `ui `uc ]
 "196
-[; ;main.c: 196:         while(RB6 == 1);
+[; ;main.c: 196:     if(RB6 == 1)
+[e $ ! == -> _RB6 `i -> 1 `i 151  ]
+"197
+[; ;main.c: 197:     {
+{
+"198
+[; ;main.c: 198:         lcd_data('9');
+[e ( _lcd_data (1 -> -> 57 `ui `uc ]
+"199
+[; ;main.c: 199:         while(RB6 == 1);
 [e $U 152  ]
 [e :U 153 ]
 [e :U 152 ]
 [e $ == -> _RB6 `i -> 1 `i 153  ]
 [e :U 154 ]
-"197
-[; ;main.c: 197:         currentPassword[passwordCurrentLength] = '9';
+"200
+[; ;main.c: 200:         currentPassword[passwordCurrentLength] = '9';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 57 `ui `uc ]
-"198
-[; ;main.c: 198:         passwordCurrentLength++;
+"201
+[; ;main.c: 201:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"199
-[; ;main.c: 199:     }
+"202
+[; ;main.c: 202:     }
 }
 [e :U 151 ]
-"200
-[; ;main.c: 200:     if(RB7 == 1)
-[e $ ! == -> _RB7 `i -> 1 `i 155  ]
-"201
-[; ;main.c: 201:     {
-{
-"202
-[; ;main.c: 202:         lcd_data('#');
-[e ( _lcd_data (1 -> -> 35 `ui `uc ]
 "203
-[; ;main.c: 203:         while(RB7 == 1);
+[; ;main.c: 203:     if(RB7 == 1)
+[e $ ! == -> _RB7 `i -> 1 `i 155  ]
+"204
+[; ;main.c: 204:     {
+{
+"205
+[; ;main.c: 205:         lcd_data('#');
+[e ( _lcd_data (1 -> -> 35 `ui `uc ]
+"206
+[; ;main.c: 206:         while(RB7 == 1);
 [e $U 156  ]
 [e :U 157 ]
 [e :U 156 ]
 [e $ == -> _RB7 `i -> 1 `i 157  ]
 [e :U 158 ]
-"204
-[; ;main.c: 204:         currentPassword[passwordCurrentLength] = '#';
+"207
+[; ;main.c: 207:         currentPassword[passwordCurrentLength] = '#';
 [e = *U + &U _currentPassword * -> -> _passwordCurrentLength `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 35 `ui `uc ]
-"205
-[; ;main.c: 205:         passwordCurrentLength++;
+"208
+[; ;main.c: 208:         passwordCurrentLength++;
 [e ++ _passwordCurrentLength -> 1 `i ]
-"206
-[; ;main.c: 206:     }
+"209
+[; ;main.c: 209:     }
 }
 [e :U 155 ]
-"207
-[; ;main.c: 207: }
+"210
+[; ;main.c: 210: }
 [e :UE 110 ]
 }
-"209
-[; ;main.c: 209: int getSize(unsigned char* string)
+"212
+[; ;main.c: 212: int getSize(unsigned char* string)
 [v _getSize `(i ~T0 @X0 1 ef1`*uc ]
-"210
-[; ;main.c: 210: {
+"213
+[; ;main.c: 213: {
 {
 [e :U _getSize ]
-"209
-[; ;main.c: 209: int getSize(unsigned char* string)
+"212
+[; ;main.c: 212: int getSize(unsigned char* string)
 [v _string `*uc ~T0 @X0 1 r1 ]
-"210
-[; ;main.c: 210: {
+"213
+[; ;main.c: 213: {
 [f ]
-"211
-[; ;main.c: 211:     int i=0;
+"214
+[; ;main.c: 214:     int i=0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"212
-[; ;main.c: 212:     for(i=0; i<string[i]!='\0'; i++);
+"215
+[; ;main.c: 215:     for(i=0; i<string[i]!='\0'; i++);
 {
 [e = _i -> 0 `i ]
 [e $U 163  ]
@@ -888,179 +903,179 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ != -> -> < _i -> *U + _string * -> _i `x -> -> # *U _string `i `x `i `i `ui -> 0 `ui 160  ]
 [e :U 161 ]
 }
-"214
-[; ;main.c: 214:     return i;
+"217
+[; ;main.c: 217:     return i;
 [e ) _i ]
 [e $UE 159  ]
-"215
-[; ;main.c: 215: }
+"218
+[; ;main.c: 218: }
 [e :UE 159 ]
 }
-"217
-[; ;main.c: 217: _Bool checkPass()
+"220
+[; ;main.c: 220: _Bool checkPass()
 [v _checkPass `(a ~T0 @X0 1 ef ]
-"218
-[; ;main.c: 218: {
+"221
+[; ;main.c: 221: {
 {
 [e :U _checkPass ]
 [f ]
-"219
-[; ;main.c: 219:     if(passwordCurrentLength == 0)
+"222
+[; ;main.c: 222:     if(passwordCurrentLength == 0)
 [e $ ! == _passwordCurrentLength -> 0 `i 165  ]
-"220
-[; ;main.c: 220:         return 0;
+"223
+[; ;main.c: 223:         return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 164  ]
 [e :U 165 ]
-"222
-[; ;main.c: 222:     for(int i=0; i<passwordMaxLength; i++)
+"225
+[; ;main.c: 225:     for(int i=0; i<passwordMaxLength; i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $U 169  ]
 [e :U 166 ]
-"223
-[; ;main.c: 223:     {
+"226
+[; ;main.c: 226:     {
 {
-"224
-[; ;main.c: 224:         if(currentPassword[i] != defaultPassword[i])
+"227
+[; ;main.c: 227:         if(currentPassword[i] != defaultPassword[i])
 [e $ ! != -> *U + &U _currentPassword * -> -> _i `ui `ux -> -> # *U &U _currentPassword `ui `ux `i -> *U + &U _defaultPassword * -> -> _i `ui `ux -> -> # *U &U _defaultPassword `ui `ux `i 170  ]
-"225
-[; ;main.c: 225:             return 0;
+"228
+[; ;main.c: 228:             return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 164  ]
 [e :U 170 ]
-"226
-[; ;main.c: 226:     }
+"229
+[; ;main.c: 229:     }
 }
 [e ++ _i -> 1 `i ]
 [e :U 169 ]
 [e $ < _i _passwordMaxLength 166  ]
 [e :U 167 ]
 }
-"227
-[; ;main.c: 227:     return 1;
+"230
+[; ;main.c: 230:     return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 164  ]
-"228
-[; ;main.c: 228: }
+"231
+[; ;main.c: 231: }
 [e :UE 164 ]
 }
-"230
-[; ;main.c: 230: void resetLock()
+"233
+[; ;main.c: 233: void resetLock()
 [v _resetLock `(v ~T0 @X0 1 ef ]
-"231
-[; ;main.c: 231: {
+"234
+[; ;main.c: 234: {
 {
 [e :U _resetLock ]
 [f ]
-"232
-[; ;main.c: 232:     passwordCurrentLength = 0;
+"235
+[; ;main.c: 235:     passwordCurrentLength = 0;
 [e = _passwordCurrentLength -> 0 `i ]
-"233
-[; ;main.c: 233:     lock_init();
+"236
+[; ;main.c: 236:     lock_init();
 [e ( _lock_init ..  ]
-"234
-[; ;main.c: 234:     for(int i=0; i<passwordMaxLength; i++)
+"237
+[; ;main.c: 237:     for(int i=0; i<passwordMaxLength; i++)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $U 175  ]
 [e :U 172 ]
-"235
-[; ;main.c: 235:     {
+"238
+[; ;main.c: 238:     {
 {
-"236
-[; ;main.c: 236:         currentPassword[i] = '0';
+"239
+[; ;main.c: 239:         currentPassword[i] = '0';
 [e = *U + &U _currentPassword * -> -> _i `ui `ux -> -> # *U &U _currentPassword `ui `ux -> -> 48 `ui `uc ]
-"237
-[; ;main.c: 237:     }
+"240
+[; ;main.c: 240:     }
 }
 [e ++ _i -> 1 `i ]
 [e :U 175 ]
 [e $ < _i _passwordMaxLength 172  ]
 [e :U 173 ]
 }
-"238
-[; ;main.c: 238: }
+"241
+[; ;main.c: 241: }
 [e :UE 171 ]
 }
-"240
-[; ;main.c: 240: void lock_init()
+"243
+[; ;main.c: 243: void lock_init()
 [v _lock_init `(v ~T0 @X0 1 ef ]
-"241
-[; ;main.c: 241: {
+"244
+[; ;main.c: 244: {
 {
 [e :U _lock_init ]
 [f ]
-"242
-[; ;main.c: 242:     lcd_init();
+"245
+[; ;main.c: 245:     lcd_init();
 [e ( _lcd_init ..  ]
-"243
-[; ;main.c: 243:     lcd_instruction(0x80);
-[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
-"244
-[; ;main.c: 244:     lcd_string("    Welcome", 11);
-[e ( _lcd_string (2 , :s 2C -> -> 11 `i `ui ]
 "246
-[; ;main.c: 246:     _delay((unsigned long)((10000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"248
-[; ;main.c: 248:     lcd_init();
-[e ( _lcd_init ..  ]
-"249
-[; ;main.c: 249:     lcd_instruction(0x80);
+[; ;main.c: 246:     lcd_instruction(0x80);
 [e ( _lcd_instruction (1 -> -> 128 `i `uc ]
-"250
-[; ;main.c: 250:     lcd_string(" Enter Password", 15);
-[e ( _lcd_string (2 , :s 3C -> -> 15 `i `ui ]
+"247
+[; ;main.c: 247:     lcd_string("    Welcome", 11);
+[e ( _lcd_string (2 , :s 2C -> -> 11 `i `ui ]
+"249
+[; ;main.c: 249:     _delay((unsigned long)((10000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"251
+[; ;main.c: 251:     lcd_init();
+[e ( _lcd_init ..  ]
 "252
-[; ;main.c: 252:     lcd_instruction(0xC0);
-[e ( _lcd_instruction (1 -> -> 192 `i `uc ]
+[; ;main.c: 252:     lcd_instruction(0x80);
+[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
 "253
-[; ;main.c: 253:     lcd_string("     ", 5);
+[; ;main.c: 253:     lcd_string(" Enter Password", 15);
+[e ( _lcd_string (2 , :s 3C -> -> 15 `i `ui ]
+"255
+[; ;main.c: 255:     lcd_instruction(0xC0);
+[e ( _lcd_instruction (1 -> -> 192 `i `uc ]
+"256
+[; ;main.c: 256:     lcd_string("     ", 5);
 [e ( _lcd_string (2 , :s 4C -> -> 5 `i `ui ]
-"254
-[; ;main.c: 254: }
+"257
+[; ;main.c: 257: }
 [e :UE 176 ]
 }
-"256
-[; ;main.c: 256: void tryAgain()
+"259
+[; ;main.c: 259: void tryAgain()
 [v _tryAgain `(v ~T0 @X0 1 ef ]
-"257
-[; ;main.c: 257: {
+"260
+[; ;main.c: 260: {
 {
 [e :U _tryAgain ]
 [f ]
-"258
-[; ;main.c: 258:     lcd_init();
+"261
+[; ;main.c: 261:     lcd_init();
 [e ( _lcd_init ..  ]
-"259
-[; ;main.c: 259:     lcd_instruction(0x80);
-[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
-"260
-[; ;main.c: 260:     lcd_string("   TRY AGAIN", 12);
-[e ( _lcd_string (2 , :s 5C -> -> 12 `i `ui ]
 "262
-[; ;main.c: 262:     _delay((unsigned long)((10000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"264
-[; ;main.c: 264:     lcd_init();
-[e ( _lcd_init ..  ]
-"265
-[; ;main.c: 265:     lcd_instruction(0x80);
+[; ;main.c: 262:     lcd_instruction(0x80);
 [e ( _lcd_instruction (1 -> -> 128 `i `uc ]
-"266
-[; ;main.c: 266:     lcd_string(" Enter Password", 15);
-[e ( _lcd_string (2 , :s 6C -> -> 15 `i `ui ]
+"263
+[; ;main.c: 263:     lcd_string("   TRY AGAIN", 12);
+[e ( _lcd_string (2 , :s 5C -> -> 12 `i `ui ]
+"265
+[; ;main.c: 265:     _delay((unsigned long)((10000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"267
+[; ;main.c: 267:     lcd_init();
+[e ( _lcd_init ..  ]
 "268
-[; ;main.c: 268:     lcd_instruction(0xC0);
-[e ( _lcd_instruction (1 -> -> 192 `i `uc ]
+[; ;main.c: 268:     lcd_instruction(0x80);
+[e ( _lcd_instruction (1 -> -> 128 `i `uc ]
 "269
-[; ;main.c: 269:     lcd_string("     ", 5);
+[; ;main.c: 269:     lcd_string(" Enter Password", 15);
+[e ( _lcd_string (2 , :s 6C -> -> 15 `i `ui ]
+"271
+[; ;main.c: 271:     lcd_instruction(0xC0);
+[e ( _lcd_instruction (1 -> -> 192 `i `uc ]
+"272
+[; ;main.c: 272:     lcd_string("     ", 5);
 [e ( _lcd_string (2 , :s 7C -> -> 5 `i `ui ]
-"270
-[; ;main.c: 270: }
+"273
+[; ;main.c: 273: }
 [e :UE 177 ]
 }
 [a 2C 32 32 32 32 87 101 108 99 111 109 101 0 ]

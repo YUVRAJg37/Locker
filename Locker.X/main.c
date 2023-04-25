@@ -36,9 +36,11 @@ void tryAgain(); //Reseting the lock when password fails
 
 void main() 
 {
+    TRISA = 0; //Setting Port A to output mode
+    TRISB = 0xF0; //Setting half Port B values to 0 and half to 1
     TRISC = 0; //Setting Port C to output mode
     TRISD = 0; //Setting Port D to output mode
-    TRISB = 0xF0; //Setting half Port B values to 0 and half to 1
+    
     
     lock_init();
 
@@ -51,9 +53,10 @@ void main()
             lcd_init();
             lcd_instruction(0x80);
             lcd_string("   UNLOCKED", 11);
-
+            PORTA = 0xFF;
             __delay_ms(10000);
-
+            
+            PORTA = 0x00;
             resetLock();
         }
         else

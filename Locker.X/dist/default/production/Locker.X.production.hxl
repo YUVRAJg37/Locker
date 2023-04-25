@@ -9,11 +9,11 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 87h		(dist/default/production\Locker.X.production.hex)
-  8ECh - FFFh		(dist/default/production\Locker.X.production.hex)
+  8DCh - FFFh		(dist/default/production\Locker.X.production.hex)
   4000h - 4007h		(dist/default/production\Locker.X.production.hex)
   400Eh - 400Fh		(dist/default/production\Locker.X.production.hex)
  Unused ranges:
-  88h - 8EBh
+  88h - 8DBh
   1000h - 3FFFh
   4008h - 400Dh
 
@@ -34,7 +34,8 @@
 00000070 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000080 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-000008E0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
+000008D0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
+000008E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000008F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000900 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000910 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
