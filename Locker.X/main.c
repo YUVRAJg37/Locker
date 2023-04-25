@@ -53,10 +53,10 @@ void main()
             lcd_init();
             lcd_instruction(0x80);
             lcd_string("   UNLOCKED", 11);
-            PORTA = 0xFF;
+            PORTA = 0xFF; //Turning On LED's
             __delay_ms(10000);
             
-            PORTA = 0x00;
+            PORTA = 0x00; //Turning Off LED's
             resetLock();
         }
         else
